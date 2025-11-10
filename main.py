@@ -6,7 +6,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 
 
-df = pd.read_csv("data/file.csv")
+df = pd.read_csv("data/refined_file.csv")
+# df = df[df["price"] != 0]
+# df = df[df["vehicle_age"] != 0]
 
 # basic overview
 # print("shape of dataset", df.shape) #rows x columns 
@@ -43,3 +45,26 @@ print("\nfirst 5 rows", df.head())
 
 # print(df['title'].head(20))
 # print(df['title'].dtype)
+
+
+# =======================================================================================
+
+zero_counts = (df == 0).sum()
+
+column_with_zeros = zero_counts[zero_counts > 0]
+
+print("\n Columns with zero values")
+print(column_with_zeros)
+
+# ===========================================================================
+# Save cleaned dataset to a new CSV file
+# df.to_csv("data/refined_file.csv", index=False)
+
+# print("✅ Cleaned dataset saved successfully as 'data/cleaned_file.csv'")
+
+
+
+# ====================================Remove those values which have zero values=============================
+
+
+
